@@ -1,13 +1,13 @@
 {
-  "name": "simple",
+  "name": "{{ name }}",
   "version": "1.0.0",
-  "description": "",
+  "description": "{{ description }}",
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server",
     "build": "cross-env NODE_ENV=production webpack"
   },
-  "author": "",
+  "author": "{{ author }}",
   "license": "ISC",
   "dependencies": {
     "react": "^16.8.6",
