@@ -1,5 +1,7 @@
 // webpack服务器配置
 const devServerConfig = require('./webpack.devServer')
+// 打包文件分析工具
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 // 将css抽成单个文件
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
@@ -34,6 +36,11 @@ module.exports = {
 		new MiniCssExtractPlugin({
 			filename: '[name].css',
       chunkFilename: '[id].css',
+		}),
+		// 分析打包文件
+		new BundleAnalyzerPlugin({
+			openAnalyzer: false,
+			// analyzerPort: 9001
 		}),
 	]
 };

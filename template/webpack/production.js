@@ -1,5 +1,6 @@
 // 将css抽成单个文件
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const webpack = require('webpack')
 
 module.exports = {
 	mode: 'production',
@@ -47,6 +48,7 @@ module.exports = {
 		]
 	},
 	plugins: [
+		new webpack.ProgressPlugin(),
 		// css抽取
 		new MiniCssExtractPlugin({
 			filename: '[name].[contenthash:5].css',

@@ -2,7 +2,6 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
 // 将css抽成单个文件
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // 设置模块如何被解析
@@ -81,11 +80,6 @@ module.exports = merge(
 		// 解析配置
 		resolve: resolveConfig,
 		plugins: [
-			// 清空output.path目录
-			new CleanWebpackPlugin({
-				// 打印日志
-				// verbose: true
-			}),
 			// 处理HTML
 			new HtmlWebpackPlugin({
 				// 压缩文件
@@ -98,6 +92,8 @@ module.exports = merge(
 					NODE_ENV: JSON.stringify(process.env.NODE_ENV)
 				}
 			}),
+			// 引入dll
+			...require(path.resolve('webpack/webpack.dll.plugins')),
 		]
 	},
 	// 加载环境配置
